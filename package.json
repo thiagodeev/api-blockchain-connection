@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "server": "file:server",
+    "smart_contract": "file:smart_contract"
+  }
+}

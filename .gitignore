@@ -130,4 +130,5 @@ dist
 .pnp.*
 
 #myCustomPaths
-build
+/build
+/besu_data

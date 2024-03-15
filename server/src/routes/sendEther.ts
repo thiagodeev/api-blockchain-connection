@@ -1,15 +1,14 @@
 import { Router } from "express";
-import { contract, signer } from "../index";
-import { TransactionRequest } from "ethers";
+import { contract } from "../index";
+import { ContractTransactionResponse } from "ethers";
 
 const sendEther = Router();
 
 sendEther.post('/', async (req, res, next) => {
-  console.log('PUT /sendEther')
+  console.log('POST /sendEther')
 
   const value = req.body.value as bigint;
-  const contractMethod = contract.getFunction("sendEther")
-  const txResponse = await contractMethod.send({value})
+  const txResponse = await contract.sendEther({value}) as ContractTransactionResponse;
   const txReceipt = await txResponse.wait();
   
   const response = {

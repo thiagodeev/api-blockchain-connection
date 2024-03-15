@@ -41,7 +41,7 @@ echo "Success."
 
 printf "\n${GREEN}*** Running Hyperledger Besu dev container... ***${NC}\n"
 
-id=$(docker run -d --rm --name besu -p 8545:$BESU_PORT hyperledger/besu:latest --miner-enabled --miner-coinbase 976EA74026E726554dB657fA54763abd0C3a0aa9 --rpc-http-enabled --network=dev)
+id=$(docker run -d --rm --name besu -p 8545:$BESU_PORT hyperledger/besu:latest --miner-enabled --miner-coinbase 976EA74026E726554dB657fA54763abd0C3a0aa9 --rpc-http-enabled --rpc-http-cors-origins=all --network=dev)
 
 trap "exitAfterDockerFn" INT 
 
@@ -60,7 +60,7 @@ echo "Success."
 
 printf "\n${GREEN}*** Starting API server... ***${NC}\n"
 cd $server_folder
-npm run buildAndStart
+npm run dev
 
 
 trap SIGINT

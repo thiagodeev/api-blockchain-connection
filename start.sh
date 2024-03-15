@@ -17,7 +17,7 @@ exitAfterDockerFn () {
   printf "\n${GREEN}*** Removing Hyperledger Besu dev container... ***${NC}\n"
   docker remove besu -f > /dev/null 2>&1
   echo "Success."
-  exit 1                  #   then exit script.
+  exit                #   then exit script.
 }
 
 trap "exitfn" INT  

@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { besuProvider } from "../index";
 
-const chainId = Router();
+const balance = Router();
 
-chainId.get('/', async (req, res, next) => {
+balance.get('/', async (req, res, next) => {
   console.log('GET /chainId')
   const response = {
     'chainId': (await besuProvider.getNetwork()).chainId.toString()
@@ -11,4 +11,4 @@ chainId.get('/', async (req, res, next) => {
   res.status(200).json(response)
 })
 
-export default chainId;
+export default balance;

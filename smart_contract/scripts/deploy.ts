@@ -13,7 +13,8 @@ async function main() {
   const deployedContract = await contract.deploy(JAN_1ST_2030, {value: ONE_GWEI});
   deployedContract.waitForDeployment();
 
-  console.log("Token address:", await deployedContract.getAddress());
+  console.log("Contracts address:", await deployedContract.getAddress());
+  console.log("Transaction hash:", deployedContract.deploymentTransaction()?.hash);
 }
 
 main().catch((error) => {

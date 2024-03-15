@@ -27,11 +27,11 @@ server_folder=$path/server/
 contract_folder=$path/smart_contract/
 
 printf "\n${GREEN}*** Installing server dependencies... ***${NC}\n"
-$(npm ci $server_folder) > /dev/null 2>&1
+# $(npm ci $server_folder) > /dev/null 2>&1
 echo "Success."
 
 printf "\n${GREEN}*** Installing smart contract dependencies... ***${NC}\n"
-$(npm ci $contract_folder) > /dev/null 2>&1
+# $(npm ci $contract_folder) > /dev/null 2>&1
 echo "Success."
 
 printf "\n${GREEN}*** Copying .env file to /server and /smart_contract folders... ***${NC}\n"
@@ -40,9 +40,8 @@ cp .env $contract_folder
 echo "Success."
 
 printf "\n${GREEN}*** Running Hyperledger Besu dev container... ***${NC}\n"
-mkdir besu_data > /dev/null 2>&1
 
-id=$(docker run -d --rm --name besu -p 8545:$BESU_PORT --mount type=bind,source=$path/besu_data/,target=/var/lib/besu hyperledger/besu:latest --miner-enabled --miner-coinbase 976EA74026E726554dB657fA54763abd0C3a0aa9 --rpc-http-enabled --network=dev --data-path=/var/lib/besu)
+id=$(docker run -d --rm --name besu -p 8545:$BESU_PORT hyperledger/besu:latest --miner-enabled --miner-coinbase 976EA74026E726554dB657fA54763abd0C3a0aa9 --rpc-http-enabled --network=dev)
 
 trap "exitAfterDockerFn" INT 
 

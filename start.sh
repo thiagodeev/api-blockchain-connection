@@ -27,11 +27,11 @@ server_folder=$path/server/
 contract_folder=$path/smart_contract/
 
 printf "\n${GREEN}*** Installing server dependencies... ***${NC}\n"
-# $(npm ci $server_folder) > /dev/null 2>&1
+$(npm ci $server_folder) > /dev/null 2>&1
 echo "Success."
 
 printf "\n${GREEN}*** Installing smart contract dependencies... ***${NC}\n"
-# $(npm ci $contract_folder) > /dev/null 2>&1
+$(npm ci $contract_folder) > /dev/null 2>&1
 echo "Success."
 
 printf "\n${GREEN}*** Copying .env file to /server and /smart_contract folders... ***${NC}\n"
